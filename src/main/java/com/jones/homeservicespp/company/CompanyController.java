@@ -9,23 +9,23 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/api")
 public class CompanyController {
 
     @Autowired
     CompanyRepository companyRepository;
 
-    @GetMapping("")
+    @GetMapping("/company")
     public List<Company> getAllCompanies() {
         return this.companyRepository.findAll();
     }
 
-    @PostMapping("")
+    @PostMapping("/company")
     public Company createCompany(@RequestBody Company company) {
         return this.companyRepository.save(company);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/company/{id}")
     public ResponseEntity<Company> updateCompany(@PathVariable("id") String id, @RequestBody Company company) {
         Optional<Company> companyData = companyRepository.findById(id);
         if (companyData.isPresent()) {
@@ -38,5 +38,18 @@ public class CompanyController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @DeleteMapping("/company/{id}")
+    public ResponseEntity<String> deleteCompany(@PathVariable("id") String id) {
+        System.out.println("Delete Company with ID = " + id + "...");
+
+        try {
+            this.companyRepository.deleteById(id);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Fail to delete!", HttpStatus.EXPECTATION_FAILED);
+        }
+
+        return new ResponseEntity<>("Company has been deleted!", HttpStatus.OK);
     }
 }
