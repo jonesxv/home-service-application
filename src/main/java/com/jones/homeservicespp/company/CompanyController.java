@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class CompanyController {
@@ -23,6 +24,12 @@ public class CompanyController {
     @PostMapping("/company")
     public Company createCompany(@RequestBody Company company) {
         return this.companyRepository.save(company);
+    }
+
+    @GetMapping("/company/{id}")
+    public Optional<Company> getCompany(@PathVariable("id") String id) {
+        System.out.println(this.companyRepository.findById(id));
+        return this.companyRepository.findById(id);
     }
 
     @PatchMapping("/company/{id}")
