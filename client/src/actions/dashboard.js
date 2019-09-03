@@ -9,10 +9,13 @@ export const getCompany = id => {
   return dispatch => {
     return axios.get(`company/${id}`).then(result => {
       axios.get(`service/c/${id}`).then(services => {
-        dispatch(_getDashboard({
-          ...result.data,
-          services: [...services.data]
-          }));
+        axios.get(`category`).then(category => {
+          dispatch(_getDashboard({
+            ...result.data,
+            categories: [...category.data],
+            services: [...services.data]
+            }));
+        })
       })
     })
   }

@@ -222,3 +222,36 @@ fieldset[disabled] .btn-dark-brd {
   content: "/";
   margin-right: 3px;
 }
+
+.dashNav {
+  list-style-type: none;
+  display: flex;
+}
+
+.dashNav li {
+  padding: .5em;
+  margin-right: .3em;
+  font-size: 1.3em;
+  border-bottom: .1em solid #fff;
+  transition-duration: .5s;
+}
+
+
+
+.dashNav li:hover {
+  border-bottom: .1em solid #555;
+}
+
+.selected {
+  border-bottom: 1px solid rgb(140, 67, 67);
+}
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dash-header img {
+  max-width: 400px;
+}

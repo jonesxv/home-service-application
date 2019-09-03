@@ -1,30 +1,24 @@
 import React from "react";
 
 const SearchItem = (props) => {
+  console.log(props.service)
   return ( 
-    <section>
-<div class="profile profile-smallimg">
-<div class="profile__image"><img src="https://images.unsplash.com/photo-1492371451031-f0830e91b3d9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Home Cleaning" /></div>
-<div class="profile__info">
-<h3>Home Cleaning</h3>
-<p class="profile__info__extra"></p>
-</div>
-<div class="profile__stats">
-<p class="profile__stats__title">Type</p>
-<h5 class="profile__stats__info">Cleaning Service</h5>
-</div>
-<div class="profile__stats">
-<p class="profile__stats__title">Size</p>
-<h5>Medium</h5>
-</div>
-<div class="profile__stats">
-<p class="profile__stats__title">Weight</p>
-<h5 class="profile__stats__info">45.85 lbs</h5>
-</div>
-<div class="profile__cta"><a class="button">Adopt Home Cleaning!</a></div>
-</div>
-</section>
-   );
+    <tr className="d-flex">
+      <td className="col">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true">{props.service.name}</span> 
+      </td>
+
+      <td className="col">Company Name</td>
+      <td className="col">
+        <span class="glyphicon glyphicon-list" aria-hidden="true">${props.service.price_per_unit} / {props.service.unit}</span>   
+      </td>
+      <td className="col-2">
+        <button class="btn-view-fund btn btn-default btn-info" type="button">
+            <span class="glyphicon glyphicon-list" aria-hidden="true">Request</span>
+        </button>
+      </td>
+    </tr>
+  );
 }
  
 export default SearchItem;

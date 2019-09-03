@@ -21,6 +21,7 @@ class ServiceForm extends Component {
     })
   }
   render() {
+    
     return (
       <>
       <form onSubmit={e => this.handleSubmit(e)}>
@@ -28,7 +29,13 @@ class ServiceForm extends Component {
           <label htmlFor="name">Service Name</label>
           <input onChange={e => this.handleChange(e.target.id, e.target.value)} type="text" className="form-control" id="name" aria-describedby="servicename" placeholder="Enter Service Name" />
           <label htmlFor="category">Category</label>
-          <input onChange={e => this.handleChange(e.target.id, e.target.value)} type="text" className="form-control" id="category" aria-describedby="serviceCategory" placeholder="Enter Service Category" />
+          <select onChange={e => this.handleChange('category', e.target.value)} id="category" className="form-control">
+                <option value="" selected>Category</option>
+                {
+                  this.props.categories.map(cat => <option value={cat.id}>{cat.name}</option> )
+                }
+          </select>
+
           <label htmlFor="unit">Service Unit</label>
           <input onChange={e => this.handleChange(e.target.id, e.target.value)} type="text" className="form-control" id="unit" aria-describedby="serviceUnit" placeholder="Enter the unit the service will be charged by" />
           <label htmlFor="price">Price Per Unit</label>

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import SearchListing from './SearchListing';
-import { getServices } from '../../actions/services';
+import { getServices, searchServices } from '../../actions/services';
 
 function mapStateToProps(state) {
-  console.log('ssssss', state.services)
   return {
+    users: state.users,
     services: state.services
   }
 }
@@ -13,6 +13,9 @@ function mapDispatchToProps(dispatch) {
   return {
     getServices: () => {
       return dispatch(getServices())
+    },
+    searchServices: (compID, catID) => {
+      return dispatch(searchServices(compID, catID))
     }
   }
 }

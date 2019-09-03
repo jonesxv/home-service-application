@@ -19,9 +19,13 @@ public class ServiceController {
     ServiceRepository serviceRepository;
 
     @GetMapping("/service")
-    public List<Service> getAllServices(@RequestParam(required = false) String cat) {
-        if (cat != null) {
+    public List<Service> getAllServices(@RequestParam(required = false) String cat, @RequestParam(required = false) String comp) {
+        if (cat != null && comp == null) {
             return this.serviceRepository.findServiceByCategory(cat);
+        } else if (comp != null && cat == null) {
+            return this.serviceRepository.findServiceByCompany(comp);
+        } else if (cat != null && comp != null) {
+            return this.serviceRepository.findServiceByCategoryAndCompany(cat, comp);
         }
         return this.serviceRepository.findAll();
     }
