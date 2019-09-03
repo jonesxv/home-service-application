@@ -8,8 +8,25 @@ const _getDashboard = companyData => ({
 export const getCompany = id => {
   return dispatch => {
     return axios.get(`company/${id}`).then(result => {
-      console.log(result)
-      dispatch(_getDashboard(result));
+      axios.get(`service/c/${id}`).then(services => {
+        dispatch(_getDashboard({
+          ...result.data,
+          services: [...services.data]
+          }));
+      })
+    })
+  }
+}
+
+const _createService = service => ({
+  type: 'CREATE_SERVICE',
+  payload: service
+})
+
+export const createService = id => {
+  return dispatch => {
+    return axios.get(`service/c/${id}`).then(result => {
+      dispatch(_createService(result.data));
     })
   }
 }

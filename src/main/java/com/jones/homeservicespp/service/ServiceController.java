@@ -1,9 +1,12 @@
 package com.jones.homeservicespp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +19,18 @@ public class ServiceController {
     ServiceRepository serviceRepository;
 
     @GetMapping("/service")
-    public List<Service> getAllServices() {
+    public List<Service> getAllServices(@RequestParam(required = false) String cat) {
+        if (cat != null) {
+            return this.serviceRepository.findServiceByCategory(cat);
+        }
         return this.serviceRepository.findAll();
     }
+
+    @GetMapping("/service/c/{cid}")
+    public List<Service> getServiceByCompany(@PathVariable("cid") String cid) {
+        return this.serviceRepository.findServicesByCompany(cid);
+    }
+
 
     @PostMapping("/service")
     public Service addService(@RequestBody Service service) {
@@ -33,7 +45,7 @@ public class ServiceController {
             Service savedService = serviceData.get();
             if (service.getName() != null) savedService.setName(service.getName());
             if (service.getCategory() != null) savedService.setCategory(service.getCategory());
-            if (service.getCompany_id() != null) savedService.setCompany_id(service.getCompany_id());
+            if (service.getCompany() != null) savedService.setCompany(service.getCompany());
             if (service.getPrice_per_unit() != null) savedService.setPrice_per_unit(service.getPrice_per_unit());
             if (service.getUnit() != null) savedService.setUnit(service.getUnit());
             if (service.getBooked() != null) savedService.setBooked(service.getBooked());

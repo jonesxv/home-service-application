@@ -34,11 +34,11 @@ public class Seeder implements CommandLineRunner {
         this.serviceRepository.deleteAll();
         this.userRepository.deleteAll();
 
-        User james = new User("James","Milner", "j@j.co");
-        this.userRepository.save(james);
-
         Company help = new Company("Mountain Home Service","https://www.brandcrowd.com/gallery/brands/pictures/picture13391782322.png");
         this.companyRepository.save(help);
+
+        User james = new User("James","Milner", "j@j.co", help.getId());
+        this.userRepository.save(james);
 
         Service cleaning = new Service("House Cleaning", "Cleaning", false, help.getId(), "sq ft", 200);
         this.serviceRepository.save(cleaning);

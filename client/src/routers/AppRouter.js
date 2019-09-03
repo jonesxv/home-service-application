@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import App from '../App';
 import SearchListing from '../components/search-listing/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CompanyDashboard from '../components/company-dasboard/CompanyDashboard';
+import CompanyDashboard from '../components/company-dashboard/index';
 
 const AppRouter = () => (
   <BrowserRouter>

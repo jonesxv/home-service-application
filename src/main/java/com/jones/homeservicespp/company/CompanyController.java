@@ -28,7 +28,6 @@ public class CompanyController {
 
     @GetMapping("/company/{id}")
     public Optional<Company> getCompany(@PathVariable("id") String id) {
-        System.out.println(this.companyRepository.findById(id));
         return this.companyRepository.findById(id);
     }
 

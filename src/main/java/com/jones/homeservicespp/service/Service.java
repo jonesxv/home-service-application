@@ -10,15 +10,15 @@ public class Service {
     private String name;
     private String category;
     private Boolean booked;
-    private String company_id;
+    private String company;
     private String unit;
     private Integer price_per_unit;
 
-    public Service(String name, String category, Boolean booked, String company_id, String unit, Integer price_per_unit) {
+    public Service(String name, String category, Boolean booked, String company, String unit, Integer price_per_unit) {
         this.name = name;
         this.category = category;
         this.booked = booked;
-        this.company_id = company_id;
+        this.company = company;
         this.unit = unit;
         this.price_per_unit = price_per_unit;
     }
@@ -55,12 +55,12 @@ public class Service {
         this.booked = booked;
     }
 
-    public String getCompany_id() {
-        return company_id;
+    public String getCompany() {
+        return company;
     }
 
-    public void setCompany_id(String company_id) {
-        this.company_id = company_id;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getUnit() {
@@ -86,7 +86,7 @@ public class Service {
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
                 ", booked=" + booked +
-                ", company_id='" + company_id + '\'' +
+                ", company='" + company + '\'' +
                 ", unit='" + unit + '\'' +
                 ", price_per_unit=" + price_per_unit +
                 '}';

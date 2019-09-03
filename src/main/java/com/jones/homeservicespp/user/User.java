@@ -11,6 +11,7 @@ public class User {
     private String last_name;
     private String email;
     private String password;
+    private String company_id;
 
     public String getPassword() {
         return password;
@@ -20,10 +21,11 @@ public class User {
         this.password = password;
     }
 
-    public User(String first_name, String last_name, String email) {
+    public User(String first_name, String last_name, String email, String company_id) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
+        this.company_id = company_id;
     }
 
     public String getId() {
@@ -57,4 +59,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getCompany_id() {
+        return company_id;
+    }
+
+    public void setCompany_id(String company_id) {
+        this.company_id = company_id;
+    }
+
+
 }

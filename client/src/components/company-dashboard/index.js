@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CompanyDashboard from './CompanyDashboard';
-import { getCompany } from '../../actions/companies';
+import { getCompany, createService } from '../../actions/dashboard';
 
 const mapStateToProps = state => {
   return {
@@ -13,6 +13,11 @@ const matpDispatchToProps = dispatch => {
     getCompany: id => {
       return dispatch(
         getCompany(id)
+      )
+    },
+    createService: id => {
+      return dispatch(
+        createService(id)
       )
     }
   }
