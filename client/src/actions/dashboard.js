@@ -23,9 +23,9 @@ const _createService = service => ({
   payload: service
 })
 
-export const createService = id => {
+export const createService = service => {
   return dispatch => {
-    return axios.get(`service/c/${id}`).then(result => {
+    return axios.post(`service`, service).then(result => {
       dispatch(_createService(result.data));
     })
   }

@@ -6,27 +6,35 @@ class ServiceForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.props.id);
+    this.props.createService({
+      ...this.state,
+      company: this.props.id
+    });
   }
 
-  handleChange = value => {
-    console.log(value)
+  handleChange = (field, value) => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        [field]: value
+      }
+    })
   }
   render() {
     return (
       <>
       <form onSubmit={e => this.handleSubmit(e)}>
         <div className="form-group">
-          <label for="serviceTitle">Service Name</label>
-          <input onChange={e => this.handleChange(e.target.id)} type="text" class="form-control" id="serviceName" aria-describedby="servicename" placeholder="Enter Service Name" />
-          <label for="serviceCategory">Category</label>
-          <input type="text" class="form-control" id="serviceCategory" aria-describedby="serviceCategory" placeholder="Enter Service Category" />
-          <label for="serviceUnit">Service Unit</label>
-          <input type="text" class="form-control" id="serviceUnit" aria-describedby="serviceUnit" placeholder="Enter the unit the service will be charged by" />
-          <label for="servicePrice">Price Per Unit</label>
-          <input type="text" class="form-control" id="servicePrice" aria-describedby="serviceprice" placeholder="Enter Service Price Per Unit" />
+          <label htmlFor="name">Service Name</label>
+          <input onChange={e => this.handleChange(e.target.id, e.target.value)} type="text" className="form-control" id="name" aria-describedby="servicename" placeholder="Enter Service Name" />
+          <label htmlFor="category">Category</label>
+          <input onChange={e => this.handleChange(e.target.id, e.target.value)} type="text" className="form-control" id="category" aria-describedby="serviceCategory" placeholder="Enter Service Category" />
+          <label htmlFor="unit">Service Unit</label>
+          <input onChange={e => this.handleChange(e.target.id, e.target.value)} type="text" className="form-control" id="unit" aria-describedby="serviceUnit" placeholder="Enter the unit the service will be charged by" />
+          <label htmlFor="price">Price Per Unit</label>
+          <input onChange={e => this.handleChange(e.target.id, e.target.value)} type="text" className="form-control" id="price_per_unit" aria-describedby="serviceprice" placeholder="Enter Service Price Per Unit" />
         </div>
-        <button type="submit" class="btn btn-primary">Create Service</button>
+        <button type="submit" className="btn btn-primary">Create Service</button>
       </form>
       </>
     );

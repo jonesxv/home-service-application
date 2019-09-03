@@ -15,9 +15,9 @@ const matpDispatchToProps = dispatch => {
         getCompany(id)
       )
     },
-    createService: id => {
+    createService: service => {
       return dispatch(
-        createService(id)
+        createService(service)
       )
     }
   }
