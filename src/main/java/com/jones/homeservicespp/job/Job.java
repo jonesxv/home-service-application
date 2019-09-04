@@ -1,6 +1,9 @@
 package com.jones.homeservicespp.job;
 
+import com.jones.homeservicespp.company.Company;
+import com.jones.homeservicespp.service.Service;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -9,15 +12,17 @@ import java.util.List;
 public class Job {
     @Id
     private String id;
-    private String customer_id;
-    private String company_id;
-    private String service_id;
+    private String customerEmail;
+    private Company company;
+    private Service service;
+    private boolean confirmed;
     private List<String> notes;
 
-    public Job(String customer_id, String company_id, String service_id, List<String> notes) {
-        this.customer_id = customer_id;
-        this.company_id = company_id;
-        this.service_id = service_id;
+    public Job(String customerEmail, Company company, Service service, boolean confirmed, List<String> notes) {
+        this.customerEmail = customerEmail;
+        this.company = company;
+        this.service = service;
+        this.confirmed = confirmed;
         this.notes = notes;
     }
 
@@ -29,28 +34,28 @@ public class Job {
         this.id = id;
     }
 
-    public String getCustomer_id() {
-        return customer_id;
+    public String getCustomerEmail() {
+        return customerEmail;
     }
 
-    public void setCustomer_id(String customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
-    public String getCompany_id() {
-        return company_id;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompany_id(String company_id) {
-        this.company_id = company_id;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
-    public String getService_id() {
-        return service_id;
+    public Service getService() {
+        return service;
     }
 
-    public void setService_id(String service_id) {
-        this.service_id = service_id;
+    public void setService(Service service) {
+        this.service = service;
     }
 
     public List<String> getNotes() {
@@ -61,13 +66,22 @@ public class Job {
         this.notes = notes;
     }
 
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
     @Override
     public String toString() {
         return "Job{" +
                 "id='" + id + '\'' +
-                ", customer_id='" + customer_id + '\'' +
-                ", company_id='" + company_id + '\'' +
-                ", service_id='" + service_id + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", company=" + company +
+                ", service=" + service +
+                ", confirmed=" + confirmed +
                 ", notes=" + notes +
                 '}';
     }

@@ -30,6 +30,11 @@ public class ServiceController {
         return this.serviceRepository.findAll();
     }
 
+    @GetMapping("/service/{sid}")
+    public Optional<Service> getService(@PathVariable("sid") String sid) {
+        return this.serviceRepository.findById(sid);
+    }
+
     @GetMapping("/service/c/{cid}")
     public List<Service> getServiceByCompany(@PathVariable("cid") String cid) {
         return this.serviceRepository.findServicesByCompany(cid);

@@ -68,13 +68,13 @@ public class Seeder implements CommandLineRunner {
         User james = new User("James","Milner", "j@j.co", help.getId());
         this.userRepository.save(james);
 
-        Service cleaning = new Service("House Cleaning", homeCleaning.getId(), false, help.getId(), "sq ft", 200);
-        Service junk = new Service("Get Rid of Junk", junkRemoval.getId(), false, help.getId(), "50 lbs", 20);
+        Service cleaning = new Service("House Cleaning", homeCleaning.getId(), false, help.getId(), help.getName(), "sq ft", 200);
+        Service junk = new Service("Get Rid of Junk", junkRemoval.getId(), false, help.getId(), help.getName(), "50 lbs", 20);
         this.serviceRepository.save(junk);
         this.serviceRepository.save(cleaning);
 
-        Job clean = new Job(james.getId(), help.getId(), cleaning.getId(), Arrays.asList("Note"));
-        Job junkJob = new Job(james.getId(), help.getId(), junk.getId(), Arrays.asList("Note"));
+        Job clean = new Job(james.getEmail(), help, cleaning, false, Arrays.asList("Note"));
+        Job junkJob = new Job(james.getEmail(), help, junk, false, Arrays.asList("Note"));
         this.jobRepository.save(junkJob);
         this.jobRepository.save(clean);
     }

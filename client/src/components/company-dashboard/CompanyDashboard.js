@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ServiceForm from './ServiceForm';
 import Service from './Service';
-
+import JobListing from './JobListing';
 class CompanyDashboard extends Component {
 
   state = {
@@ -13,7 +13,6 @@ class CompanyDashboard extends Component {
   }
 
   dashComponent = () => {
-    console.log("state", this.state.show)
     switch (this.state.show) {
       case 'Services':
         return (
@@ -29,13 +28,9 @@ class CompanyDashboard extends Component {
           </div>
         )
       case 'Jobs':
-        return (
-          <h1>Jobs</h1>
-        )
+        return <JobListing jobs={this.props.dashboard.jobs} />
       case 'Create Service':
-          return (
-            <ServiceForm {...this.props.dashboard} createService={this.props.createService} />
-          )
+          return <ServiceForm {...this.props.dashboard} createService={this.props.createService} />
       default:
         return (
           <div className="bg-color-sky-light">

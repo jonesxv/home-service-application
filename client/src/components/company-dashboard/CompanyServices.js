@@ -12,7 +12,6 @@ class CompanyServices extends Component {
   }
   
   render() {
-    console.log(this.state)
     const serviceComponents = Object.keys(this.state.services).map(key => {
       return <Service key={key} {...this.state.services[key]} />
     })

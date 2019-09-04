@@ -8,7 +8,8 @@ class ServiceForm extends Component {
     e.preventDefault();
     this.props.createService({
       ...this.state,
-      company: this.props.id
+      company: this.props.id,
+      companyName: this.props.name
     });
   }
 

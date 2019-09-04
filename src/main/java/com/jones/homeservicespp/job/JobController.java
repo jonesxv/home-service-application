@@ -16,9 +16,20 @@ public class JobController {
     JobRepository jobRepository;
 
     @GetMapping("/job")
-    public List<Job> getAllJobs() {
+    public List<Job> getAllJobs(@RequestParam(required = false) String cid) {
+        if (cid != null) {
+           return this.jobRepository.findByComp(cid);
+        }
         return this.jobRepository.findAll();
     }
+
+    @PostMapping("/confirm/{id}")
+    public Job confirmJob(@PathVariable("id") String id) {
+        Optional<Job> updateJob = this.jobRepository.findById(id);
+        Job job = updateJob.get();
+        job.setConfirmed(true);
+        return this.jobRepository.save(job);
+    };
 
     @PostMapping("/job")
     public Job createJob(@RequestBody Job job) {
@@ -30,9 +41,9 @@ public class JobController {
         Optional<Job> jobData = jobRepository.findById(id);
         if (jobData.isPresent()) {
             Job savedJob = jobData.get();
-            if (job.getCompany_id() != null) savedJob.setCompany_id(job.getCompany_id());
-            if (job.getCustomer_id() != null) savedJob.setCustomer_id(job.getCustomer_id());
-            if (job.getService_id() != null) savedJob.setService_id(job.getService_id());
+            if (job.getCompany() != null) savedJob.setCompany(job.getCompany());
+            if (job.getCustomerEmail() != null) savedJob.setCustomerEmail(job.getCustomerEmail());
+            if (job.getService() != null) savedJob.setService(job.getService());
             if (job.getNotes() != null) savedJob.setNotes(job.getNotes());
 
             Job updatedJob = jobRepository.save(savedJob);

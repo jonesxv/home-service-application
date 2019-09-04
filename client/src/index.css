@@ -255,3 +255,12 @@ fieldset[disabled] .btn-dark-brd {
 .dash-header img {
   max-width: 400px;
 }
+
+.request-link {
+  color: white;
+  text-decoration: none !important;
+}
+
+.request-link:hover {
+  color: rgba(255, 255, 255, 0.502);
+}

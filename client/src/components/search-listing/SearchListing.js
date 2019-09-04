@@ -8,6 +8,7 @@ class SearchListing extends Component {
   }
   
   render() {
+    console.log('listing', this.props)
     return (
       <div>
         <Search {...this.props.services} searchServices={this.props.searchServices} />
@@ -38,7 +39,6 @@ class SearchListing extends Component {
             </div>
           </div>
         </div>
-
       </div>
     );
   }

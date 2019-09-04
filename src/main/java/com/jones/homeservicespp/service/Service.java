@@ -11,14 +11,16 @@ public class Service {
     private String category;
     private Boolean booked;
     private String company;
+    private String companyName;
     private String unit;
     private Integer price_per_unit;
 
-    public Service(String name, String category, Boolean booked, String company, String unit, Integer price_per_unit) {
+    public Service(String name, String category, Boolean booked, String company, String companyName, String unit, Integer price_per_unit) {
         this.name = name;
         this.category = category;
         this.booked = booked;
         this.company = company;
+        this.companyName = companyName;
         this.unit = unit;
         this.price_per_unit = price_per_unit;
     }
@@ -63,6 +65,14 @@ public class Service {
         this.company = company;
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
     public String getUnit() {
         return unit;
     }
@@ -87,6 +97,7 @@ public class Service {
                 ", category='" + category + '\'' +
                 ", booked=" + booked +
                 ", company='" + company + '\'' +
+                ", companyName='" + companyName + '\'' +
                 ", unit='" + unit + '\'' +
                 ", price_per_unit=" + price_per_unit +
                 '}';

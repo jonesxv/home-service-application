@@ -15,12 +15,15 @@ const NavBar = props => <nav className="navbar navbar-expand-lg navbar-light bg-
         <a className="nav-link" href="/search">Search</a>
       </li>
       <li className="nav-item">
+        <a className="nav-link" href="/companies">Companies</a>
+      </li>
+      <li className="nav-item">
         <a className="nav-link" href="/login">Login</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/signup">Sign Up</a>
       </li>
-      <li className="nav-item dropdown">
+      {/* <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
@@ -29,7 +32,7 @@ const NavBar = props => <nav className="navbar navbar-expand-lg navbar-light bg-
           <a className="dropdown-item" href="/">Another action</a>
           <a className="dropdown-item" href="/">Something else here</a>
         </div>
-      </li>
+      </li> */}
     </ul>
   </div>
 </nav>
