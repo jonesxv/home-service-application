@@ -14,6 +14,12 @@ const dashboardReducer = (state = defaultState, action) => {
         ...state,
         services: [...state.services, action.payload]
       }
+    case 'UPDATE_COMPANY':
+      return {
+        ...state,
+        name: action.payload.name,
+        imageUrl: action.payload.imageUrl
+      }
     default:
       return state;
   }

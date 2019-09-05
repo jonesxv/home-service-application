@@ -31,9 +31,9 @@ class ServiceForm extends Component {
           <input onChange={e => this.handleChange(e.target.id, e.target.value)} type="text" className="form-control" id="name" aria-describedby="servicename" placeholder="Enter Service Name" />
           <label htmlFor="category">Category</label>
           <select onChange={e => this.handleChange('category', e.target.value)} id="category" className="form-control">
-                <option value="" selected>Category</option>
+                <option value="">Category</option>
                 {
-                  this.props.categories.map(cat => <option value={cat.id}>{cat.name}</option> )
+                  this.props.categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option> )
                 }
           </select>
 

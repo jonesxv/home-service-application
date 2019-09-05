@@ -13,19 +13,20 @@ public class User {
     private String password;
     private String company_id;
 
+    public User(String first_name, String last_name, String email, String password, String company_id) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.password = password;
+        this.company_id = company_id;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public User(String first_name, String last_name, String email, String company_id) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email = email;
-        this.company_id = company_id;
     }
 
     public String getId() {

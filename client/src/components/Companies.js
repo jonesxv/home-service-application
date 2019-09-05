@@ -9,18 +9,19 @@ class Companies extends Component {
     })
   }
   render() {
-    console.log('state', this.state);
-    
     const companiesList = this.state.companies && this.state.companies.map(company => {
       return (
-        <a href={`/dashboard/${company.id}`} class="list-group-item list-group-item-action">
+        <a key={company.id} href={`/dashboard/${company.id}`} className="list-group-item list-group-item-action">
           {company.name}
         </a>
       )
     })
     return (
-      <div class="list-group">
+      <div className="container">
+      <h2>Registered Company Dashboards</h2>
+      <div className="list-group">
         {companiesList}
+      </div>
       </div>
     );
   }

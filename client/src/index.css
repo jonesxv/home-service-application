@@ -12,6 +12,22 @@ code {
     monospace;
 }
 
+.navbar-brand img {
+  max-width: 4em;
+}
+
+.masthead {
+  background-image: url("https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80");
+  height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.masthead-heading {
+  padding-top: 3em;
+}
+
 /*--------------------------------------------------
     [Gutter]
 ----------------------------------------------------*/
@@ -263,4 +279,9 @@ fieldset[disabled] .btn-dark-brd {
 
 .request-link:hover {
   color: rgba(255, 255, 255, 0.502);
+}
+
+.sm-container {
+  max-width: 400px;
+  margin: 20px auto;
 }

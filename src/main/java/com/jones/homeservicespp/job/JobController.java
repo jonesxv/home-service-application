@@ -1,8 +1,14 @@
 package com.jones.homeservicespp.job;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import com.jones.homeservicespp.company.Company;
+import com.jones.homeservicespp.company.CompanyRepository;
+import com.jones.homeservicespp.service.Service;
+import com.jones.homeservicespp.service.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +20,10 @@ import org.springframework.web.bind.annotation.*;
 public class JobController {
     @Autowired
     JobRepository jobRepository;
+    @Autowired
+    ServiceRepository serviceRepository;
+    @Autowired
+    CompanyRepository companyRepository;
 
     @GetMapping("/job")
     public List<Job> getAllJobs(@RequestParam(required = false) String cid) {
@@ -32,7 +42,13 @@ public class JobController {
     };
 
     @PostMapping("/job")
-    public Job createJob(@RequestBody Job job) {
+    public Job createJob(@RequestBody JobResponse body) {
+        System.out.println(body.getServiceId());
+        Optional<Service> serviceInstance = this.serviceRepository.findById(body.getServiceId());
+        System.out.println(serviceInstance);
+        Optional<Company> companyInstance = this.companyRepository.findById(body.getCompanyId());
+        Job job = new Job(body.getCustomerEmail(), companyInstance.get(), serviceInstance.get(), false, Arrays.asList("Note"));
+        System.out.println(job);
         return this.jobRepository.save(job);
     }
 

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import ServiceForm from './ServiceForm';
 import Service from './Service';
 import JobListing from './JobListing';
+import EditCompany from './EditCompany';
 class CompanyDashboard extends Component {
 
   state = {
-    show: 'services'
+    show: 'Services'
   }
 
   componentDidMount() {
@@ -31,6 +32,8 @@ class CompanyDashboard extends Component {
         return <JobListing jobs={this.props.dashboard.jobs} />
       case 'Create Service':
           return <ServiceForm {...this.props.dashboard} createService={this.props.createService} />
+      case 'Edit Company':
+          return <EditCompany/>
       default:
         return (
           <div className="bg-color-sky-light">
@@ -54,7 +57,7 @@ class CompanyDashboard extends Component {
   
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="dash-header">
           <img alt={this.props.dashboard.name} src={this.props.dashboard.imageUrl} />
           <h3>{this.props.dashboard.name}</h3>

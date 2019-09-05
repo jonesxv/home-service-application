@@ -36,3 +36,16 @@ export const createService = service => {
     })
   }
 }
+
+const _editCompany = company => ({
+  type: 'EDIT_COMPANY',
+  payload: company
+})
+
+export const editCompany = (id, company) => {
+  return dispatch => {
+    return axios.patch(`company/${id}`, company).then(result => {
+      dispatch(_editCompany(result.data));
+    })
+  }
+}

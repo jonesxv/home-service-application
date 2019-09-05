@@ -7,6 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CompanyDashboard from '../components/company-dashboard/index';
 import RequestForm from '../components/search-listing/RequestForm';
 import Companies from '../components/Companies';
+import Home from '../components/Home';
+import Login from '../components/Login';
+import SignUp from '../components/SignUp';
 
 function PrivateRoute({ component: Component, ...rest }) {
   let fakeAuth = {};
@@ -34,16 +37,16 @@ function PrivateRoute({ component: Component, ...rest }) {
 const AppRouter = () => (
   <BrowserRouter>
     <Header />
-    <div className='container'>
       <Switch>
-        <Route exact path="/" component={() => <h1>Home</h1>} />
+        <Route exact path="/" component={Home} />
         <Route path="/app" component={App} />
         <Route path="/search" component={SearchListing} />
         <Route path="/request/:id" component={RequestForm} />
         <Route path="/companies" component={Companies} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
         <PrivateRoute path="/dashboard/:id" component={CompanyDashboard} />
       </Switch>
-    </div>
   </BrowserRouter>
 );
 

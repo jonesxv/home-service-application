@@ -12,27 +12,19 @@ class JobListing extends Component {
                 <thead className="thead-default">
                   <tr className="d-flex">
                     <th className="col">
-                        <span className="glyphicon glyphicon-plus green" aria-hidden="true">Job Name</span>
+                        <span className="glyphicon glyphicon-plus green" aria-hidden="true">Service Name</span>
                     </th>
                     <th className="col">Requestor Email</th>
-                    <th className="col">Confirmed</th>
-                    <th className="col-2"></th>
+                    <th className="col"></th>
+                    <th className="col-2">Confirmed</th>
                   </tr>
                 </thead>
                 <tbody>
                   {
                     this.props.jobs.map(job => {
-                      console.log(job);
-                      
                       return <JobItem key={job.id} {...job} />
                     })
                   }
-                {/* {
-                  Object.keys(this.props.jobs).length > 0 ?
-                  Object.keys(this.props.jobs).map(job => 
-                    <JobItem key={job} service={this.props.jobs[job]} />)
-                  : <h2 className="text-center">No services found</h2>
-                } */}
                 </tbody>
               </table>
             </div>

@@ -50,7 +50,7 @@ class RequestForm extends Component {
   
   render() {
     return (
-      <>
+      <div className="container">
       {
         this.state.service ? 
         (
@@ -70,7 +70,7 @@ class RequestForm extends Component {
         ) : 'loading'
       }
       
-      </>
+      </div>
     );
   }
 }

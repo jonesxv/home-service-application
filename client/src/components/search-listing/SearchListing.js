@@ -8,9 +8,8 @@ class SearchListing extends Component {
   }
   
   render() {
-    console.log('listing', this.props)
     return (
-      <div>
+      <div className="container">
         <Search {...this.props.services} searchServices={this.props.searchServices} />
 
         <div className="row">
