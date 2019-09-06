@@ -1,8 +1,8 @@
 # Home Service Management and Booking Application
 
-This project was built with 
-**Back End:** Java Spring, MongoDB
-**Front End:** React, Redux, Bootstrap
+This project was built with  
+**Back End:** Java Spring, MongoDB  
+**Front End:** React, Redux, Bootstrap  
 
 ## Getting Started
 
